@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload File</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h2 {
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .file-label {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #2196F3;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s;
+    }
+
+    .file-label:hover {
+      background-color: #1976D2;
+    }
+
+    #file-name {
+      margin-top: 10px;
+      display: block;
+      color: #555;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 30px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #message {
+      margin-top: 15px;
+      color: #4CAF50;
+    }
+
+    .back-link {
+      display: block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #666;
+      font-size: 14px;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Upload progress popup */
+    #progress-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      width: 300px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .progress-bar {
+      height: 20px;
+      width: 100%;
+      background-color: #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background-color: #4CAF50;
+      transition: width 0.2s ease-in-out;
+    }
+
+    .percent-text {
+      font-size: 14px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Upload Your File</h2>
+    <form id="uploadForm">
+      <input type="file" id="file" name="file" required>
+      <label for="file" class="file-label">Choose File</label>
+      <span id="file-name">No file chosen</span>
+      <button type="submit" >Upload</button>
+    </form>
+    <div id="message"></div>
+    <a href="{{ url_for('home') }}" class="back-link">← Back to Home</a>
+  </div>
+
+  <div id="progress-popup">
+    <div class="popup-content">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-bar"></div>
+      </div>
+      <div class="percent-text" id="progress-percent">Uploading...</div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('uploadForm');
+    const fileInput = document.getElementById('file');
+    const fileNameSpan = document.getElementById('file-name');
+    const message = document.getElementById('message');
+    const progressPopup = document.getElementById('progress-popup');
+    const progressBar = document.getElementById('progress-bar');
+    const progressPercent = document.getElementById('progress-percent');
+
+    fileInput.addEventListener('change', function () {
+      const fileName = fileInput.files[0] ? fileInput.files[0].name : 'No file chosen';
+      fileNameSpan.innerText = fileName;
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const file = fileInput.files[0];
+      if (!file) {
+        message.innerText = 'Please select a file to upload.';
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', '/upload', true);
+
+      progressPopup.style.display = 'flex';
+
+      xhr.upload.addEventListener('progress', function (e) {
+        if (e.lengthComputable) {
+          const percent = Math.round((e.loaded / e.total) * 100);
+          progressBar.style.width = percent + '%';
+          progressPercent.innerText = percent + '%';
+        }
+      });
+
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          progressPercent.innerText = 'File Uploaded!';
+          setTimeout(() => {
+            progressPopup.style.display = 'none';
+            progressBar.style.width = '0%';
+            progressPercent.innerText = '0%';
+            message.innerText = 'File uploaded successfully!';
+            fileInput.value = '';
+            fileNameSpan.innerText = 'No file chosen';
+          }, 1000);
+        } else {
+          progressPopup.style.display = 'none';
+          message.innerText = 'Upload failed. Please try again.';
+        }
+      };
+
+      xhr.onerror = function () {
+        progressPopup.style.display = 'none';
+        message.innerText = 'Upload failed due to a network error.';
+      };
+
+      xhr.send(formData);
+    });
+  </script>
+</body>
+</html>

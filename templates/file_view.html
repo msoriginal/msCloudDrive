@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ filename }}</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 40px;
+      background-color: #f9fafc;
+      text-align: center;
+    }
+    .card {
+      background: white;
+      padding: 25px;
+      max-width: 700px;
+      margin: auto;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    iframe, img, pre {
+      max-width: 100%;
+      margin: 20px 0;
+      border-radius: 6px;
+    }
+    .download-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 20px;
+      background: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .download-btn:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>{{ filename }}</h2>
+
+    {% if ext in ['jpg', 'jpeg', 'png', 'gif'] %}
+      <img src="{{ url_for('download_file', filename=filename) }}" alt="{{ filename }}">
+    {% elif ext == 'pdf' %}
+      <iframe src="{{ url_for('download_file', filename=filename) }}" width="100%" height="400px"></iframe>
+    {% elif ext in ['txt', 'log', 'csv'] %}
+      <pre>{{ preview }}</pre>
+    {% else %}
+      <p>Preview not available for this file type.</p>
+    {% endif %}
+
+    <a href="{{ url_for('download_file', filename=filename) }}" class="download-btn">Download File</a>
+  </div>
+  
+	<p style="text-align: center; margin-top: 30px;">
+	<a href="{{ url_for('home') }}" style="text-decoration: none; color: #007BFF; font-weight: bold;">
+    ← Go Back to Home
+	</a>
+	</p>
+</body>
+</html>

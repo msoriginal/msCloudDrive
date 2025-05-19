@@ -1,0 +1,63 @@
+[2025-05-14T14:42:52.880Z] [INFO] Attempting to start localtunnel with subdomain: mukeshsharma
+[2025-05-14T14:42:53.955Z] [lt stdout] your url is: https://mukeshsharma.loca.lt
+[2025-05-14T14:56:48.809Z] [WARN] LocalTunnel exited (code: 0, signal: null). Retrying in 5s...
+[2025-05-14T14:56:53.821Z] [INFO] Attempting to start localtunnel with subdomain: mukeshsharma
+[2025-05-14T14:56:54.807Z] [lt stdout] your url is: https://mukeshsharma.loca.lt
+[2025-05-14T15:05:51.513Z] [WARN] LocalTunnel exited (code: 0, signal: null). Retrying in 5s...
+[2025-05-14T15:05:56.522Z] [INFO] Attempting to start localtunnel with subdomain: mukeshsharma
+[2025-05-14T15:05:57.564Z] [lt stdout] your url is: https://mukeshsharma.loca.lt
+[2025-05-14T15:09:30.260Z] [WARN] LocalTunnel exited (code: 0, signal: null). Retrying in 5s...
+[2025-05-14T15:09:35.269Z] [INFO] Attempting to start localtunnel with subdomain: mukeshsharma
+[2025-05-14T15:09:36.302Z] [lt stdout] your url is: https://mukeshsharma.loca.lt
+[2025-05-14T15:09:57.560Z] [WARN] LocalTunnel exited (code: 0, signal: null). Retrying in 5s...
+[2025-05-14T15:10:02.570Z] [INFO] Attempting to start localtunnel with subdomain: mukeshsharma
+[2025-05-14T15:10:04.638Z] [lt stdout] your url is: https://mukeshsharma.loca.lt
+[2025-05-14T15:16:36.671Z] [WARN] LocalTunnel exited (code: 0, signal: null). Retrying in 5s...
+[2025-05-14T15:16:41.676Z] [INFO] Attempting to start localtunnel with subdomain: mukeshsharma
+[2025-05-14T15:16:42.649Z] [lt stdout] your url is: https://mukeshsharma.loca.lt
+[2025-05-14T15:21:19.052Z] [WARN] LocalTunnel exited (code: 0, signal: null). Retrying in 5s...
+[2025-05-14T15:21:24.061Z] [INFO] Attempting to start localtunnel with subdomain: mukeshsharma
+[2025-05-14T15:21:25.162Z] [lt stdout] your url is: https://mukeshsharma.loca.lt
+[2025-05-14T15:25:15.518Z] [WARN] LocalTunnel exited (code: 0, signal: null). Retrying in 5s...
+[2025-05-14T15:25:20.529Z] [INFO] Attempting to start localtunnel with subdomain: mukeshsharma
+[2025-05-14T15:25:21.542Z] [lt stdout] your url is: https://mukeshsharma.loca.lt
+[2025-05-14T15:30:02.930Z] [WARN] LocalTunnel exited (code: 0, signal: null). Retrying in 5s...
+[2025-05-14T15:30:07.936Z] [INFO] Attempting to start localtunnel with subdomain: mukeshsharma
+[2025-05-14T15:30:08.919Z] [lt stdout] your url is: https://mukeshsharma.loca.lt
+[2025-05-14T15:38:09.102Z] [WARN] LocalTunnel exited (code: 0, signal: null). Retrying in 5s...
+[2025-05-14T15:38:14.119Z] [INFO] Attempting to start localtunnel with subdomain: mukeshsharma
+[2025-05-14T15:38:15.113Z] [lt stdout] your url is: https://mukeshsharma.loca.lt
+[2025-05-14T15:49:48.449Z] [lt stderr] C:\Users\mukesh.sharma\AppData\Roaming\npm\node_modules\localtunnel\bin\lt.js:81
+    throw err;
+    ^
+
+Error: connection refused: localtunnel.me:16921 (check your firewall settings)
+    at Socket.<anonymous> (C:\Users\mukesh.sharma\AppData\Roaming\npm\node_modules\localtunnel\lib\TunnelCluster.js:52:11)
+    at Socket.emit (node:events:518:28)
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:128:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+
+Node.js v20.11.0
+[2025-05-14T15:49:48.473Z] [WARN] LocalTunnel exited (code: 1, signal: null). Retrying in 5s...
+[2025-05-14T15:49:53.477Z] [INFO] Attempting to start localtunnel with subdomain: mukeshsharma
+[2025-05-14T15:49:54.482Z] [lt stdout] your url is: https://mukeshsharma.loca.lt
+[2025-05-14T21:33:53.672Z] [lt stderr] C:\Users\mukesh.sharma\AppData\Roaming\npm\node_modules\localtunnel\bin\lt.js:81
+    throw err;
+    ^
+
+Error: connection refused: localtunnel.me:11477 (check your firewall settings)
+    at Socket.<anonymous> (C:\Users\mukesh.sharma\AppData\Roaming\npm\node_modules\localtunnel\lib\TunnelCluster.js:52:11)
+    at Socket.emit (node:events:518:28)
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:128:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+
+Node.js v20.11.0
+[2025-05-14T21:33:54.145Z] [WARN] LocalTunnel exited (code: 1, signal: null). Retrying in 5s...
+[2025-05-14T21:41:06.962Z] [INFO] Attempting to start localtunnel with subdomain: mukeshsharma
+[2025-05-14T22:11:26.366Z] [WARN] LocalTunnel exited (code: 1073807364, signal: null). Retrying in 5s...
+[2025-05-15T14:20:12.756Z] [INFO] Attempting to start localtunnel with subdomain: mukeshsharma
+[2025-05-15T14:20:14.104Z] [lt stdout] your url is: https://mukeshsharma.loca.lt
+[2025-05-16T15:14:47.727Z] [INFO] Attempting to start localtunnel with subdomain: mukeshsharma
+[2025-05-16T15:14:48.916Z] [lt stdout] your url is: https://mukeshsharma.loca.lt

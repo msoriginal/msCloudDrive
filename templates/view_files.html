@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Uploaded Files</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f7f9;
+      padding: 40px;
+    }
+    h2 {
+      text-align: center;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      max-width: 600px;
+      margin: auto;
+    }
+    li {
+      background: #fff;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    a {
+      text-decoration: none;
+      color: #007BFF;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Uploaded Files</h2>
+
+  {% if error %}
+    <p style="color: red; text-align: center;">{{ error }}</p>
+  {% elif files %}
+    <ul>
+      {% for file in files %}
+        <li><a href="{{ url_for('view_single_file', filename=file) }}">{{ file }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p style="text-align: center;">No files uploaded yet.</p>
+  {% endif %}
+  
+	<p style="text-align: center; margin-top: 30px;">
+	<a href="{{ url_for('home') }}" style="text-decoration: none; color: #007BFF; font-weight: bold;">
+    ← Go Back to Home
+	</a>
+	</p>
+</body>
+</html>
